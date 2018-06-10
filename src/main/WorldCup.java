@@ -5,7 +5,6 @@ import java.util.List;
 public class WorldCup implements ITournament{
 
 	private List<Group> _groups;
-	private IPredictor _predictor;
 	private Team _winner;
 
 	public WorldCup(List<Group> groups){

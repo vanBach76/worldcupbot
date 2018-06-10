@@ -1,4 +1,5 @@
 package main;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -6,11 +7,13 @@ import java.util.List;
 
 public class Program {
 
-	private static final String PATH = "C:\\Users\\Ludvig\\Documents\\World Cup\\teams.csv";
 	
 	public static void main(String[] args) throws Exception {
 		
-		List<Team> allTeams = TeamReader.readTeams(PATH);
+		ClassLoader classLoader = Program.class.getClassLoader();
+		File file = new File(classLoader.getResource("resources/teams.csv").getFile());
+		
+		List<Team> allTeams = TeamReader.readTeams(file.getAbsolutePath());
 		List<Group> groups = new ArrayList<>();
 		
 		List<Team> teamsA = getTeams(allTeams, Arrays.asList("Russia", "Saudi Arabia", "Egypt", "Uruguay"));
